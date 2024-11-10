@@ -61,8 +61,7 @@ console.log(barshaObj.bio());
 function PersonData(name, address) {
   // "this" refers to the new empty object created by "new"
   // Assign properties to the object
-  (this.name = name), 
-  (this.address = address);
+  (this.name = name), (this.address = address);
   // No need to return the object explicitly; "new" handles that automatically
 }
 // Usage of Constructor Function with "new" keyword
@@ -71,7 +70,27 @@ function PersonData(name, address) {
 // 2. Sets "this" to refer to that object within the constructor function.
 // 3. Returns "this" (the new object) automatically at the end.
 
+const SahilObj = new PersonData("sahil", "itahari");
+console.log(typeof SahilObj);
+console.log(SahilObj);
 
-const  SahilObj = new PersonData("sahil","itahari")
-console.log(typeof SahilObj)
-console.log(SahilObj)
+// ------class based -------
+// here it provides more structure and cleaner way to work with objects compared to traditional constructor function
+class product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+  displayProduct() {
+    console.log(`ProductName: ${this.name}`);
+    console.log(`price: $${this.price.toFixed(2)}`);
+  }
+  CalculateTotal(SalesTax) {
+    return this.price + (this.price * SalesTax);
+  }
+}
+const SalesTax = 0.05;
+const product1 = new product("shirt", 150);
+product1.displayProduct();
+const total = product1.CalculateTotal(SalesTax)
+console.log(`Total price(with tax):$${total.toFixed(2)}`)
